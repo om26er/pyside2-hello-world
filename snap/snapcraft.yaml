@@ -1,0 +1,42 @@
+name: pyside2-hello-world
+version: '0.1'
+summary: Simple hello world program using PySide2
+description: |
+  Simple hello world program using PySide2
+
+grade: stable
+confinement: strict
+
+plugs:
+  pyside2:
+    interface: content
+    default-provider: pyside2:pyside2
+    target: $SNAP/pyside
+
+apps:
+  pyside2-hello-world:
+    command: python3 -u $SNAP/main.py
+    environment:
+      PYTHONPATH: $SNAP/pyside/pyside
+      LIBGL_DRIVERS_PATH: $SNAP/pyside/usr/lib/x86_64-linux-gnu/dri:/var/lib/snapd/lib/gl/xorg
+      XCOMPOSEFILE: $SNAP/pyside/usr/share/X11/locale/en_US.UTF-8/Compose
+      LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/pyside/lib:$SNAP/pyside/usr/lib:$SNAP/pyside/lib/x86_64-linux-gnu:$SNAP/pyside/usr/lib/x86_64-linux-gnu:$SNAP/pyside/usr/lib/x86_64-linux-gnu/mesa:$SNAP/pyside/usr/lib/x86_64-linux-gnu/mesa-egl"
+      FONTCONFIG_PATH: $SNAP/pyside/etc/fonts
+    plugs:
+      - opengl
+      - desktop
+      - wayland
+      - x11
+
+parts:
+  pyside2-hello-world:
+    plugin: dump
+    stage:
+      - main.py
+
+passthrough:
+  layout:
+    /usr/share/fonts:
+      bind: $SNAP/pyside/usr/share/fonts
+    /etc/fonts:
+      bind: $SNAP/pyside/etc/fonts
