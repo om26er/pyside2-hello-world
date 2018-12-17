@@ -27,6 +27,7 @@ apps:
       FONTCONFIG_PATH: $SNAP/pyside/etc/fonts
     plugs:
       - opengl
+      - desktop
       - wayland
       - x11
 

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PySide2 Hello World
+Exec=pyside2-hello-world
+Icon=${SNAP}/meta/gui/pyside2-hello-world.svg
+Type=Application
+Categories=Utility;
+StartupWMClass=PySide2
