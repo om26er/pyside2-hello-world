@@ -6,6 +6,7 @@ description: |
 
 grade: stable
 confinement: strict
+base: core18
 
 architectures:
   - build-on: amd64
@@ -37,9 +38,8 @@ parts:
     stage:
       - main.py
 
-passthrough:
-  layout:
-    /usr/share/fonts:
-      bind: $SNAP/pyside/usr/share/fonts
-    /etc/fonts:
-      bind: $SNAP/pyside/etc/fonts
+layout:
+  /usr/share/fonts:
+    bind: $SNAP/pyside/usr/share/fonts
+  /etc/fonts:
+    bind: $SNAP/pyside/etc/fonts
