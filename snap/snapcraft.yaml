@@ -35,7 +35,8 @@ apps:
 parts:
   pyside2-hello-world:
     plugin: dump
-    stage:
+    source: .
+    prime:
       - main.py
 
 layout:
